@@ -1,10 +1,13 @@
 /*
 yuandaojingweixiangji Chain breaker
 QX:
-https:\/\/toblog\.ctobsnssdk\.com\/service\/2\/app_log\/ url script-response-body https://raw.githubusercontent.com/layfu/filter/main/jingweixiangji.js
-MITM = toblog.ctobsnssdk.com
+https:\/\/log-api\.pangolin-sdk-toutiao\.com\/service\/2\/app_log\/ url script-response-body https://raw.githubusercontent.com/layfu/filter/main/jingweixiangji.js
+MITM = log-api.pangolin-sdk-toutiao.com
 */
-var body = $response.body;
-        var obj = JSON.parse(body);
+const gettime = "/2/app_log/";
+let obj = JSON.parse($response.body);
+
+if ($request.url.indexOf(gettime) != -1) {
 	obj.server_time = 1623937315;
+}
 $done({body: JSON.stringify(obj)});

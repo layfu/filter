@@ -5,9 +5,10 @@ https:\/\/toblog\.ctobsnssdk\.com\/service\/2\/app_log\/ url script-response-bod
 MITM = toblog.ctobsnssdk.com
 */
 const gettime = "/2/app_log/";
-let obj = JSON.parse($response.body);
+var body = $response.body;
 
 if ($request.url.indexOf(gettime) != -1) {
+        var obj = JSON.parse(body);
 	obj.server_time = 1623937315;
 }
 $done({body: JSON.stringify(obj)});
